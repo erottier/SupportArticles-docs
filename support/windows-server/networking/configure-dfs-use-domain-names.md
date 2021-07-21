@@ -45,7 +45,7 @@ The overall approach consists of the following four stages:
 ## Steps for stage 3: Configure the DFSN server to respond by using FQDN referrals for root targets
 
 > [!NOTE]
-> Before you continue with the following steps for stage 3, we recommend that you back up the namespace metadata to guard against unexpected failures or accidents. The backup steps, together with the other restore steps if you ever need them, are covered in steps A and C of the [Steps for stage 4](#steps-for-stage-4-update-the-namespace-metadata-for-each-folder-target-so-that-the-metadata-uses-appropriate-fqdn-names) section.
+> Before you continue with the following steps for stage 3, we recommend that you back up the namespace metadata to guard against unexpected failures or accidents. The backup steps, together with the other restore steps if you ever need them, are covered in step 1 of the [Steps for stage 4](#steps-for-stage-4-update-the-namespace-metadata-for-each-folder-target-so-that-the-metadata-uses-appropriate-fqdn-names) section.
 
 > [!NOTE]
 > The DFSN Windows PowerShell cmdlets that are mentioned in this section are available only starting with Windows Server 2012 or Windows 8.
@@ -53,7 +53,7 @@ The overall approach consists of the following four stages:
 1. Obtain the list of domain-based namespaces that are hosted on the server. To do it, use one of the following methods:
 
     ```powershell
-    Get-DfsnRoot - ComputerName ServerName |Where type -NotMatch "Standalone"
+    Get-DfsnRoot -ComputerName ServerName | Where type -NotMatch "Standalone"
     ```
 
     ```powershell
@@ -127,7 +127,7 @@ The overall approach consists of the following four stages:
     Restore each namespace that you previously removed from this namespace server. To do this, use one of the following methods:
 
     ```powershell
-    New-DfsnRootTarget - TargetPath RootTarget [-Path Namespace]
+    New-DfsnRootTarget -TargetPath RootTarget [-Path Namespace]
     ```
 
     ```powershell
